@@ -25,8 +25,11 @@
 			"rows": 3,
 			"padding": {"horizontal": 2, "vertical": 2},
 			"alwaysShowFilters": true,
+			"fields": {
+				"multiXp": {"visible": true, "dx": 0, "dy": 60, "alpha": 100, "scale": 1}
+			},
 			"extraFields":[
-				{"x": 130, "y": 17, "format": "<img src='img://gui/maps/icons/library/proficiency/class_icons_{{v.mastery}}.png' width='27' height='27'>"},
+				{"x": 130, "y": -1, "format": "<img src='img://gui/maps/icons/library/proficiency/class_icons_{{v.mastery}}.png' width='27' height='27'>"},
 				{"x": 4, "y": 29, "format": "<font color='{{v.c_winrate}}'>{{v.winrate%d~%}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": 4, "y": 49, "format": "<font color='{{v.c_wn8effd}}'>{{v.wn8effd%0.2f}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}}
 			]
