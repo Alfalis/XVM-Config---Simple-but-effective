@@ -1,4 +1,4 @@
-{
+﻿{
 	"definition":{
 		"author": "Alfalis"
 	},
@@ -30,8 +30,8 @@
 			},
 			"extraFields":[
 				{"x": 130, "y": -1, "format": "<img src='img://gui/maps/icons/library/proficiency/class_icons_{{v.mastery}}.png' width='27' height='27'>"},
-				{"x": 4, "y": 29, "format": "<font color='{{v.c_winrate}}'>{{v.winrate%d~%}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
-				{"x": 4, "y": 49, "format": "<font color='{{v.c_wn8effd}}'>{{v.wn8effd%0.2f}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 4, "y": 29, "format": "<font color='{{v.c_winrate|#FF0000}}'>{{v.winrate%d~%|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 4, "y": 49, "format": "<font color='{{v.c_wn8effd|#FF0000}}'>{{v.wn8effd%0.2f|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": -2, "y": -1, "h": 100, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?10|0}}"},
 				{"x": -2, "y": -1, "h": 2, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": -2, "y": -1, "h": 100, "w": "2", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
