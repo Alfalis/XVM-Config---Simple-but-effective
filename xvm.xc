@@ -196,8 +196,8 @@
 			}
 		},
 		"medium2": {
-			"formatLeft": "<font color='{{c:wn8}}'>{{vehicle}}</font>",
-			"formatRight": "<font color='{{c:wn8}}'>{{vehicle}}</font>",
+			"formatLeft": "<font color='{{c:wn8|#FFFFFF}}'>{{vehicle}}</font>",
+			"formatRight": "<font color='{{c:wn8|#FFFFFF}}'>{{vehicle}}</font>",
 			//HEALTHBARS
 			"extraFieldsLeft":[
 			//	{ "x": 22, "y": 21, "valign": "center", "w": 71, "h": 4, "bgColor": "0x000000", "alpha": "70" },
@@ -209,10 +209,10 @@
 			]
 		},
 		"large":{
-			"nickFormatLeft": "<font color='{{c:rating}}' alpha='{{alive?#FF|#80}}'>{{rating}}</font>  {{name%.17s}}{{clan}}",
-			"nickFormatRight": "{{name%.17s}}{{clan}}  <font color='{{c:rating}}' alpha='{{alive?#FF|#80}}'>{{rating}}</font>",
-			"vehicleFormatLeft": "<font color='{{c:wn8}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
-			"vehicleFormatRight": "<font color='{{c:wn8}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
+			"nickFormatLeft": "<font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>  {{name%.17s}}{{clan}}",
+			"nickFormatRight": "{{name%.17s}}{{clan}}  <font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>",
+			"vehicleFormatLeft": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
+			"vehicleFormatRight": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"width": 170,
 			//HEALTHBARS
 			"extraFieldsLeft":[
@@ -349,7 +349,7 @@
 				  "alpha": 100,
 				  "color": null,
 				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 33},
-				  "format": "<font color='{{c:wn8}}'>_____</font>",
+				  "format": "<font color='{{c:wn8|#FFFFFF}}'>_____</font>",
 				  "name": "WN8 Line",
 				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
 				  "visible": true,
@@ -754,7 +754,7 @@
 				  "alpha": 100,
 				  "color": null,
 				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 33},
-				  "format": "<font color='{{c:wn8}}'>_____</font>",
+				  "format": "<font color='{{c:wn8|#FFFFFF}}'>_____</font>",
 				  "name": "WN8 Line",
 				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
 				  "visible": true,
