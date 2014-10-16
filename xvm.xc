@@ -1,10 +1,11 @@
-﻿{
-	"definition":{
-		"author": "Alfalis"
-	},
+﻿//Alfalis - Simple but effective
+//Release 13
+//XVM 5.3.7-dev Build 3337
+{
 	"battle":{
 		//HEALTHBARS
-		//"allowHpInPanelsAndMinimap": true
+		//"allowHpInPanelsAndMinimap": true,
+		"showPostmortemTips": false
 	},
 	"battleLoading":{
 		"showChances": true,
@@ -17,6 +18,7 @@
 		}
 	},
 	"battleResults":{
+		"startPage": 2,
 		"showCrewExperience": true,
 		"showChances": true
 	},
@@ -40,6 +42,8 @@
 			]
 		},
 		"clock":{
+			"x": -5,
+			"y": 40,
 			"format": "<font face='$FieldFont'><font size='19'>{{D%02d}}.{{M%02d}}.{{Y}}</font><font size='26'> {{h%02d}}:{{m%02d}}</font></font>"
 		}
 	},
@@ -133,7 +137,7 @@
 				{"enabled": false, "distance": "dynamic",   "scale": 1, "thickness":  1.0, "alpha": 60, "color": "0x3EB5F1"}
 			],
 			"artillery": {"enabled": true, "alpha": 70, "color": "0xFF6666", "thickness": 0.5},
-			"shell": {"enabled": true, "alpha": 55, "color": "0xFF6666", "thickness": 0.5}
+			"shell": {"enabled": true, "alpha": 70, "color": "0xFF6666", "thickness": 0.5}
 		},
 		"lines":{
 			"camera":[
