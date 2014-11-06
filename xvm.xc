@@ -1,6 +1,6 @@
 ﻿//Alfalis - Simple but effective
-//Release 13
-//XVM 5.3.7-dev Build 3337
+//Release 14
+//XVM 5.4.1-dev Build 3402
 {
 	"battle":{
 		//HEALTHBARS
@@ -8,7 +8,6 @@
 		"showPostmortemTips": false
 	},
 	"battleLoading":{
-		"showChances": true,
 		"formatLeftNick": "{{nick}}",
 		"formatRightNick": "{{nick}}",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
@@ -19,8 +18,7 @@
 	},
 	"battleResults":{
 		"startPage": 2,
-		"showCrewExperience": true,
-		"showChances": true
+		"showCrewExperience": true
 	},
 	"hangar":{
 		"carousel":{
@@ -44,7 +42,36 @@
 		"clock":{
 			"x": -5,
 			"y": 40,
-			"format": "<font face='$FieldFont'><font size='19'>{{D%02d}}.{{M%02d}}.{{Y}}</font><font size='26'> {{h%02d}}:{{m%02d}}</font></font>"
+			"format": "<font face='$FieldFont'><font size='19' color='#B2B2B2'>{{D%02d}}.{{M%02d}}.{{Y}}</font><font size='26' color='#B2B2B2'> {{h%02d}}:{{m%02d}}</font></font>",
+			"shadow":{
+				"alpha": 80,
+				"blur": 3
+			}
+		},
+		"pingServers":{
+			"enabled": true,
+			"updateInterval": 5000,
+			"x": 200,
+			"y": 83,
+			"alpha": 90,
+			"fontStyle":{
+				"size": 18,
+				"color": {
+					"great": "0x2AE62E",
+					"good":  "0xEDF51B",
+					"poor":  "0xFB1B1B",
+					"bad":   "0x868686"
+				}
+			},
+			"threshold":{
+				"great": 30,
+				"good": 50,
+				"poor": 100
+			},
+			"shadow":{
+				"alpha": 80,
+				"strength": 3
+			}
 		}
 	},
 	"hitLog": {
@@ -233,7 +260,6 @@
 		"showPlayersStatistics": true
 	},
 	"statisticForm":{
-		"showChances": true,
 		"clanIcon":{
 			"show": false
 		},
