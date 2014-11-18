@@ -1,6 +1,6 @@
 ﻿//Alfalis - Simple but effective
-//Release 14
-//XVM 5.4.1-dev Build 3402
+//Release 15
+//XVM 5.4.1.3-dev Build 3429
 {
 	"battle":{
 		//HEALTHBARS
@@ -102,9 +102,11 @@
 		}
 	},
 	"login":{
-		"autologin": true
+		"autologin": true,
+		"confirmOldReplays": true
 	},
 	"minimap":{
+		"hideCameraTriangle": true,
 		"labels":{
 			"units":{
 				"format":{
@@ -256,9 +258,6 @@
 			]
 		}
 	},
-	"rating":{
-		"showPlayersStatistics": true
-	},
 	"statisticForm":{
 		"clanIcon":{
 			"show": false
@@ -294,12 +293,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 40,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 3,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -307,12 +306,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 40,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 3,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -320,12 +319,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 40,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 3,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
@@ -410,12 +409,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -423,12 +422,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -436,12 +435,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
@@ -528,12 +527,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -541,12 +540,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -554,12 +553,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
@@ -601,12 +600,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -614,12 +613,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -627,12 +626,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
@@ -699,12 +698,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 40,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 3,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -712,12 +711,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 40,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 3,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -725,12 +724,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 40,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 3,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
@@ -815,12 +814,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -828,12 +827,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -841,12 +840,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
@@ -933,12 +932,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -946,12 +945,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -959,12 +958,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
@@ -1006,12 +1005,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextPlayer":{
 				"alpha": 100,
@@ -1019,12 +1018,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "damageTextSquadman":{
 				"alpha": 100,
@@ -1032,12 +1031,12 @@
 				"color": null,
 				"damageMessage": "{{dmg}}",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 30,
+				"maxRange": 50,
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 2,
+				"speed": 4,
 				"visible": true,
 				"x": 0,
-				"y": -67
+				"y": -90
 			 },
 			  "healthBar":{
 				"alpha": 100,
