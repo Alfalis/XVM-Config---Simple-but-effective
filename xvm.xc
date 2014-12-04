@@ -1,7 +1,8 @@
 ﻿//Alfalis - Simple but effective
-//Release 15
-//XVM 5.4.1.3-dev Build 3429
+//Release 16
+//XVM 5.4.1.3-dev Build 3443
 {
+	"autoReloadConfig": true,	
 	"battle":{
 		//HEALTHBARS
 		//"allowHpInPanelsAndMinimap": true,
@@ -19,6 +20,13 @@
 	"battleResults":{
 		"startPage": 2,
 		"showCrewExperience": true
+	},
+	"colors":{
+		"dmg_kind": {
+			"shot": "0x00EE00",
+			"fire": "0xEE0000",
+			"ramming": "0xFFEE00"
+		}
 	},
 	"hangar":{
 		"carousel":{
@@ -40,9 +48,9 @@
 			]
 		},
 		"clock":{
-			"x": -5,
-			"y": 40,
-			"format": "<font face='$FieldFont'><font size='19' color='#B2B2B2'>{{D%02d}}.{{M%02d}}.{{Y}}</font><font size='26' color='#B2B2B2'> {{h%02d}}:{{m%02d}}</font></font>",
+			"x": -6,
+			"y": 38,
+			"format": "<font face='$FieldFont'><font size='32' color='#D9D9D9' weight='bold'>{{h%02d}}:{{m%02d}}</font></font>",
 			"shadow":{
 				"alpha": 80,
 				"blur": 3
@@ -81,8 +89,8 @@
 		"deadMarker": "<font color='#FF0000' face='Wingdings'>N</font>",
 		"defaultHeader": "<font color='#FFFFFF'>{{l10n:Hits}}:</font> <font size='13'>#0</font>",
 		"direction": "down",
-		"formatHeader": "<font color='#FFFFFF'>{{l10n:Hits}}:</font> <font size='13'>#{{n}}</font> <font color='#FFFFFF'>{{l10n:Total}}: </font><b>{{dmg-total}}</b>  <font color='#FFFFFF'>{{l10n:Last}}:</font> <font color='{{c:dmg-kind}}'><b>{{dmg}}</b> {{dead}}</font>",
-		"formatHistory": "<textformat leading='-4' tabstops='[20,50,90,190]'><font size='12'>#{{n-player}}:</font><tab><font color='{{c:dmg-kind}}'>{{dmg}}</font><tab>| {{dmg-player}}<tab>|<font color='{{c:wn8}}'> {{vehicle}} {{dead}}</font><tab><font color='#FFFFFF'>| {{nick}}</font></textformat>",
+		"formatHeader": "<font color='#FFFFFF'>{{l10n:Hits}}:</font> <font size='13'>#{{n}}</font> <font color='#FFFFFF'>{{l10n:Total}}: </font><b>{{dmg-total}}</b>  <font color='#FFFFFF'>{{l10n:Last}}:</font> <font color='{{c:dmg-kind}}'><b>{{dmg}}</b> {{dead}}</font><br /><font color='#FFFFFF'><textformat leading='-4' tabstops='[20,50,90,190]'># <tab>Total<tab>| Last<tab>| Tank<tab>| Player</textformat></font>",
+		"formatHistory": "<textformat leading='-4' tabstops='[20,50,90,190]'><font size='12'>#{{n-player}}:</font><tab>{{dmg-player}}<tab>| <font color='{{c:dmg-kind}}'>{{dmg}}</font><tab>|<font color='{{c:wn8}}'> {{vehicle}} {{dead}}</font><tab><font color='#FFFFFF'>| {{nick}}</font></textformat>",
 		"groupHitsByPlayer": true,
 		"h": 1000,
 		"hpLeft": {
@@ -328,10 +336,10 @@
 			 },
 			  "healthBar":{
 				"alpha": 100,
-				"border":{"alpha": 45, "color": "0x000000", "size": 1},
+				"border":{"alpha": 75, "color": "0x000000", "size": 1},
 				"color": null,
 				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 55},
+				"fill":{"alpha": 60},
 				"height": 16,
 				"lcolor": null,
 				"visible": true,
@@ -384,6 +392,17 @@
 				  "visible": true,
 				  "x": 0,
 				  "y": -38
+				},
+				{
+				  "alpha": 100,
+				  "color": "0xFFFFFF",
+				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+				  "format": "{{squad-num}} ",
+				  "name": "Squad Number",
+				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+				  "visible": true,
+				  "x": 53,
+				  "y": -23	
 				}
 			  ],
 			  "vehicleIcon":{
@@ -444,10 +463,10 @@
 			 },
 			  "healthBar":{
 				"alpha": 100,
-				"border":{"alpha": 45, "color": "0x000000", "size": 1},
+				"border":{"alpha": 75, "color": "0x000000", "size": 1},
 				"color": null,
 				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 55},
+				"fill":{"alpha": 60},
 				"height": 16,
 				"lcolor": null,
 				"visible": true,
@@ -461,7 +480,7 @@
 				  "alpha": 100,
 				  "color": "0xFCFCFC",
 				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{hp}}",
+				  "format": "{{hp}} / {{hp-max}}",
 				  "name": "Current Health",
 				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
 				  "visible": true,
@@ -733,10 +752,10 @@
 			 },
 			  "healthBar":{
 				"alpha": 100,
-				"border":{"alpha": 45, "color": "0x000000", "size": 1},
+				"border":{"alpha": 75, "color": "0x000000", "size": 1},
 				"color": null,
 				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 55},
+				"fill":{"alpha": 60},
 				"height": 16,
 				"lcolor": null,
 				"visible": true,
@@ -789,6 +808,17 @@
 				  "visible": true,
 				  "x": 0,
 				  "y": -38
+				},
+				{
+				  "alpha": 100,
+				  "color": "0xFFFFFF",
+				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+				  "format": "{{squad-num}} ",
+				  "name": "Squad Number",
+				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+				  "visible": true,
+				  "x": 53,
+				  "y": -23
 				}
 			  ],
 			  "vehicleIcon":{
@@ -849,10 +879,10 @@
 			 },
 			  "healthBar":{
 				"alpha": 100,
-				"border":{"alpha": 45, "color": "0x000000", "size": 1},
+				"border":{"alpha": 75, "color": "0x000000", "size": 1},
 				"color": null,
 				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 55},
+				"fill":{"alpha": 60},
 				"height": 16,
 				"lcolor": null,
 				"visible": true,
@@ -866,7 +896,7 @@
 				  "alpha": 100,
 				  "color": "0xFCFCFC",
 				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{hp}}",
+				  "format": "{{hp}} / {{hp-max}}",
 				  "name": "Current Health",
 				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
 				  "visible": true,
