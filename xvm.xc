@@ -1,11 +1,9 @@
 ﻿//Alfalis - Simple but effective
-//Release 16
-//XVM 5.4.1.3-dev Build 3443
+//Release 17
+//XVM 5.4.2-dev Build 3520
 {
 	"autoReloadConfig": true,	
 	"battle":{
-		//HEALTHBARS
-		//"allowHpInPanelsAndMinimap": true,
 		"showPostmortemTips": false
 	},
 	"battleLoading":{
@@ -26,7 +24,13 @@
 			"shot": "0x00EE00",
 			"fire": "0xEE0000",
 			"ramming": "0xFFEE00"
-		}
+		},
+		"damageRating": [
+			{ "value": 65,    "color": "0xF8F400"},
+			{ "value": 85,    "color": "0x60FF00"},
+			{ "value": 95,    "color": "0x02C9B3"},
+			{ "value": 101,    "color": "0xD042F3"}			
+		]
 	},
 	"hangar":{
 		"carousel":{
@@ -40,6 +44,7 @@
 				{"x": 130, "y": -1, "format": "<img src='img://gui/maps/icons/library/proficiency/class_icons_{{v.mastery}}.png' width='27' height='27'>"},
 				{"x": 4, "y": 29, "format": "<font color='{{v.c_winrate|#FF0000}}'>{{v.winrate%d~%|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": 4, "y": 49, "format": "<font color='{{v.c_wn8effd|#FF0000}}'>{{v.wn8effd%0.2f|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 60, "y": 2, "format": "<font color='{{v.c_damageRating|#FF0000}}' size='13'>{{v.damageRating%0.2f~%|n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": -2, "y": -1, "h": 100, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?10|0}}"},
 				{"x": -2, "y": -1, "h": 2, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": -2, "y": -1, "h": 100, "w": "2", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
@@ -218,35 +223,11 @@
 			"yr": 2
 		},
 		"removePanelsModeSwitcher": true,
-		"enemySpottedMarker":{
-			"enabled": true,
-			"Xoffset": -27,
-			"Yoffset": -5,
-			"enabled": true,
-			"format":{
-				"artillery":{
-					"neverSeen": "<FONT SIZE=\"22\" COLOR=\"#EE0000\">\u25CF</FONT>",
-					"lost": "<FONT SIZE=\"22\" COLOR=\"#FFEE00\">\u25CF</FONT>",
-					"revealed": "<FONT SIZE=\"22\" COLOR=\"#00DD00\">\u25CF</FONT>",
-					"dead": "<FONT FACE=\"Wingdings\" SIZE=\"17\" COLOR=\"#FFFFFF\">N</FONT>"
-				},
-				"neverSeen": "<FONT SIZE=\"22\" COLOR=\"#EE0000\">\u25CF</FONT>",
-				"lost": "<FONT SIZE=\"22\" COLOR=\"#FFEE00\">\u25CF</FONT>",
-				"revealed": "<FONT SIZE=\"22\" COLOR=\"#00DD00\">\u25CF</FONT>",
-				"dead": "<FONT FACE=\"Wingdings\" SIZE=\"17\" COLOR=\"#FFFFFF\">N</FONT>"
-			}
-		},
 		"medium2": {
 			"formatLeft": "<font color='{{c:wn8|#FFFFFF}}'>{{vehicle}}</font>",
 			"formatRight": "<font color='{{c:wn8|#FFFFFF}}'>{{vehicle}}</font>",
-			//HEALTHBARS
-			"extraFieldsLeft":[
-			//	{ "x": 22, "y": 21, "valign": "center", "w": 71, "h": 4, "bgColor": "0x000000", "alpha": "70" },
-			//	{ "x": 24, "y": 22, "valign": "center", "w": "{{hp-ratio:67}}", "h": 2, "bgColor": "0x00CC00", "alpha": "70" }
-			],
 			"extraFieldsRight":[
-			//	{ "x": 22, "y": 21, "valign": "center", "w": 71, "h": 4, "bgColor": "0x000000", "alpha": "70" },
-			//	{ "x": 24, "y": 22, "valign": "center", "w": "{{hp-ratio:67}}", "h": 2, "bgColor": "0xCC0000", "alpha": "70" }
+				{"x": -50, "y": 8, "bindToIcon": true, "format": "{{spotted}}"}
 			]
 		},
 		"large":{
@@ -255,14 +236,8 @@
 			"vehicleFormatLeft": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"vehicleFormatRight": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"width": 170,
-			//HEALTHBARS
-			"extraFieldsLeft":[
-			//	{ "x": 51, "y": 21, "valign": "center", "w": 140, "h": 4, "bgColor": "0x000000", "alpha": "70" },
-			//	{ "x": 53, "y": 22, "valign": "center", "w": "{{hp-ratio:136}}", "h": 2, "bgColor": "0x00CC00", "alpha": "70" }
-			],
 			"extraFieldsRight":[
-			//	{ "x": 51, "y": 21, "valign": "center", "w": 140, "h": 4, "bgColor": "0x000000", "alpha": "70" },
-			//	{ "x": 53, "y": 22, "valign": "center", "w": "{{hp-ratio:136}}", "h": 2, "bgColor": "0xCC0000", "alpha": "70" }
+				{"x": -50, "y": 8, "bindToIcon": true, "format": "{{spotted}}"}
 			]
 		}
 	},
@@ -274,6 +249,14 @@
 		"formatRightNick": "{{nick}}",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
 		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
+	},
+	"texts":{
+		"spotted":{
+			"neverSeen": "<font face=\"Wingdings\" size=\"16\" color=\"#EE0000\">l</font>",
+			"lost": "<font face=\"Wingdings\" size=\"16\" color=\"#FFEE00\">l</font>",
+			"revealed": "<font face=\"Wingdings\" size=\"16\" color=\"#00DD00\">l</font>",
+			"dead": "<font FACE=\"Wingdings\" size=\"17\" color=\"#FFFFFF\">N</font>"
+		}
 	},
 	"turretMarkers":{
 		"highVulnerability": "",
@@ -513,12 +496,23 @@
 				  "alpha": 100,
 				  "color": null,
 				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-				  "format": "<font color='{{c:kb}}'>{{kb}}</font>",
-				  "name": "Number of Battles",
+				  "format": "<font color='{{c:kb}}'>{{kb}}</font>  <font color='{{c:rating}}'>{{rating}}</font>",
+				  "name": "Number of Battles and Winrate",
 				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 				  "visible": true,
 				  "x": 0,
 				  "y": -75
+				},
+				{
+				  "alpha": 100,
+				  "color": "0xFFFFFF",
+				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+				  "format": "{{squad-num}} ",
+				  "name": "Squad Number",
+				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+				  "visible": true,
+				  "x": 53,
+				  "y": -23	
 				}
 			  ],
 			  "vehicleIcon":{
@@ -929,12 +923,23 @@
 				  "alpha": 100,
 				  "color": null,
 				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-				  "format": "<font color='{{c:kb}}'>{{kb}}</font>",
-				  "name": "Number of Battles",
+				  "format": "<font color='{{c:kb}}'>{{kb}}</font>  <font color='{{c:rating}}'>{{rating}}</font>",
+				  "name": "Number of Battles and Winrate",
 				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 				  "visible": true,
 				  "x": 0,
 				  "y": -75
+				},
+				{
+				  "alpha": 100,
+				  "color": "0xFFFFFF",
+				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+				  "format": "{{squad-num}} ",
+				  "name": "Squad Number",
+				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+				  "visible": true,
+				  "x": 53,
+				  "y": -23	
 				}
 			  ],
 			  "vehicleIcon":{
