@@ -1,6 +1,6 @@
 ﻿//Alfalis - Simple but effective
-//Release 17
-//XVM 5.4.2-dev Build 3520
+//Release 18
+//XVM 5.4.2-dev Build 3535
 {
 	"autoReloadConfig": true,	
 	"battle":{
@@ -53,9 +53,7 @@
 			]
 		},
 		"clock":{
-			"x": -6,
-			"y": 38,
-			"format": "<font face='$FieldFont'><font size='32' color='#D9D9D9' weight='bold'>{{h%02d}}:{{m%02d}}</font></font>",
+			"format": "<textformat tabstops='[80]' leading='-39'><font face='$FieldFont' color='#A7A798'><font size='15'>{{D%02d}} {{MM}} {{Y}}<tab><font size='36'>{{h%02d}}:{{m%02d}}</font>\n<textformat rightMargin='87'>{{WW}}</font></textformat></textformat>",
 			"shadow":{
 				"alpha": 80,
 				"blur": 3
@@ -255,7 +253,11 @@
 			"neverSeen": "<font face=\"Wingdings\" size=\"16\" color=\"#EE0000\">l</font>",
 			"lost": "<font face=\"Wingdings\" size=\"16\" color=\"#FFEE00\">l</font>",
 			"revealed": "<font face=\"Wingdings\" size=\"16\" color=\"#00DD00\">l</font>",
-			"dead": "<font FACE=\"Wingdings\" size=\"17\" color=\"#FFFFFF\">N</font>"
+			"dead": "<font FACE=\"Wingdings\" size=\"17\" color=\"#FFFFFF\">N</font>",
+			"neverSeen_arty": "<font face=\"Wingdings\" size=\"16\" color=\"#EE0000\">l</font>",
+			"lost_arty": "<font face=\"Wingdings\" size=\"16\" color=\"#FFEE00\">l</font>",
+			"revealed_arty": "<font face=\"Wingdings\" size=\"16\" color=\"#00DD00\">l</font>",
+			"dead_arty": "<font FACE=\"Wingdings\" size=\"17\" color=\"#FFFFFF\">N</font>"
 		}
 	},
 	"turretMarkers":{
