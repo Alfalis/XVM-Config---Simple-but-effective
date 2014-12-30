@@ -1,14 +1,14 @@
 ﻿//Alfalis - Simple but effective
-//Release 18
-//XVM 5.4.2-dev Build 3535
+//Release 19
+//XVM 5.5.0 Build 3549
 {
 	"autoReloadConfig": true,	
 	"battle":{
 		"showPostmortemTips": false
 	},
 	"battleLoading":{
-		"formatLeftNick": "{{nick}}",
-		"formatRightNick": "{{nick}}",
+		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{nick}}",
+		"formatRightNick": "{{nick}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
 		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}",
 		"clanIcon":{
@@ -243,8 +243,8 @@
 		"clanIcon":{
 			"show": false
 		},
-		"formatLeftNick": "{{nick}}",
-		"formatRightNick": "{{nick}}",
+		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{nick}}",
+		"formatRightNick": "{{nick}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
 		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
 	},
