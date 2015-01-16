@@ -1,14 +1,14 @@
 ﻿//Alfalis - Simple but effective
-//Release 19
-//XVM 5.5.0 Build 3549
+//Release 20
+//XVM 5.5.1.3 Build 3690
 {
 	"autoReloadConfig": true,	
 	"battle":{
 		"showPostmortemTips": false
 	},
 	"battleLoading":{
-		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{nick}}",
-		"formatRightNick": "{{nick}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
+		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.13s~..}} <font alpha='#A0'>{{clan}}</font>",
+		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.13s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
 		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}",
 		"clanIcon":{
@@ -21,15 +21,21 @@
 	},
 	"colors":{
 		"dmg_kind": {
-			"shot": "0x00EE00",
-			"fire": "0xEE0000",
-			"ramming": "0xFFEE00"
+			"shot": "0x60FF00",
+			"fire": "0xFE0E00",
+			"ramming": "0xF8F400"
 		},
 		"damageRating": [
-			{ "value": 65,    "color": "0xF8F400"},
-			{ "value": 85,    "color": "0x60FF00"},
-			{ "value": 95,    "color": "0x02C9B3"},
-			{ "value": 101,    "color": "0xD042F3"}			
+			{"value": 65,	"color": "0xF8F400"},
+			{"value": 85,	"color": "0x60FF00"},
+			{"value": 95,	"color": "0x02C9B3"},
+			{"value": 101,	"color": "0xD042F3"}			
+		],
+		"hp_ratio": [
+			{"value": 10,	"color": "0xEE0000"},
+			{"value": 25,	"color": "0xFE7903"},
+			{"value": 50,	"color": "0xF8F400"},
+			{"value": 101,	"color": "0x00EE00"}
 		]
 	},
 	"hangar":{
@@ -114,7 +120,8 @@
 	},
 	"login":{
 		"autologin": true,
-		"confirmOldReplays": true
+		"confirmOldReplays": true,
+		"saveLastServer": true
 	},
 	"minimap":{
 		"hideCameraTriangle": true,
@@ -229,8 +236,8 @@
 			]
 		},
 		"large":{
-			"nickFormatLeft": "<font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>  {{name%.17s}}{{clan}}",
-			"nickFormatRight": "{{name%.17s}}{{clan}}  <font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>",
+			"nickFormatLeft": "<font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>  {{name%.17s~..}} <font alpha='#A0'>{{clan}}</font>",
+			"nickFormatRight": "<font alpha='#A0'>{{clan}}</font> {{name%.17s~..}}  <font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>",
 			"vehicleFormatLeft": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"vehicleFormatRight": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"width": 170,
@@ -243,8 +250,8 @@
 		"clanIcon":{
 			"show": false
 		},
-		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{nick}}",
-		"formatRightNick": "{{nick}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
+		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.13s~..}} <font alpha='#A0'>{{clan}}</font>",
+		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.13s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
 		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
 	},
@@ -275,859 +282,957 @@
 	//###############################################################
 	"markers":{
 		"ally":{
-		  "alive":{
-			"normal":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 75, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 60},
-				"height": 16,
-				"lcolor": null,
-				"visible": true,
-				"width": 90,
-				"x": -46,
-				"y": -36
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -65},
-			  "textFields": [
-				{
-				  "alpha": 100,
-				  "color": "0x000000",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{vehicle}}",
-				  "name": "Vehicle Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x00FF00", "distance": 0, "size": 5, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -41
-			   },
-				{
-				  "alpha": 100,
-				  "color": "0xFCFCFC",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{hp}}",
-				  "name": "Current Health",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
-				  "visible": true,
-				  "x": 0,
-				  "y": -23
-			   },
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{rlevel}}",
-				  "name": "Vehicle Level",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -58
-			   },
-				{
-				  "alpha": 100,
-				  "color": null,
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 33},
-				  "format": "<font color='{{c:wn8|#FFFFFF}}'>_____</font>",
-				  "name": "WN8 Line",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -38
+			"alive":{
+				"normal":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 75, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 100, "color": null, "fade": 1},
+						"fill":{"alpha": 60},
+						"height": 16,
+						"lcolor": null,
+						"visible": true,
+						"width": 90,
+						"x": -46,
+						"y": -36
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -65},
+					"textFields":[
+						{
+							"alpha": 100,
+							"color": "0x000000",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{vehicle}}",
+							"name": "Vehicle Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x00FF00", "distance": 0, "size": 5, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -41
+						},
+						{
+							"alpha": 100,
+							"color": "0xFCFCFC",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{hp}}",
+							"name": "Current Health",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
+							"visible": true,
+							"x": 0,
+							"y": -23
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{rlevel}}",
+							"name": "Vehicle Level",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 33},
+							"format": "<font color='{{c:wn8|#FFFFFF}}'>_____</font>",
+							"name": "WN8 Line",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -38
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{squad-num}}",
+							"name": "Squad Number",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+							"visible": true,
+							"x": 53,
+							"y": -23	
+						}
+					],
+					"vehicleIcon":{
+					"alpha": 100,
+					"color": null,
+					"maxScale": 100,
+					"scaleX": 0,
+					"scaleY": 16,
+					"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+					"showSpeaker": false,
+					"visible": true,
+					"x": 0,
+					"y": -12
+					}
 				},
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{squad-num}} ",
-				  "name": "Squad Number",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
-				  "visible": true,
-				  "x": 53,
-				  "y": -23	
+				"extended":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 75, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 100, "color": null, "fade": 1},
+						"fill":{"alpha": 60},
+						"height": 16,
+						"lcolor": null,
+						"visible": true,
+						"width": 90,
+						"x": -46,
+						"y": -36
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
+					"textFields":[
+						{
+							"alpha": 100,
+							"color": "0xFCFCFC",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{hp}} / {{hp-max}}",
+							"name": "Current Health",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
+							"visible": true,
+							"x": 0,
+							"y": -23
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{nick}}",
+							"name": "Player Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -41
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "right", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:kb}}'>{{kb}}</font>",
+							"name": "Global Battles",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": -20,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:rating}}'>{{rating}}</font>",
+							"name": "Global Winrate",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "left", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:wn8}}'>{{wn8%d}}</font>",
+							"name": "Global WN8",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 20,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "right", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:t-battles|#FF0000}}'>{{t-battles|n/a}}</font>",
+							"name": "Tank Battles",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": -20,
+							"y": -75
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:t-rating|#FF0000}}'>{{t-rating%d~%|n/a}}</font>",
+							"name": "Tank Winrate",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -75
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "left", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='#FFFFFF'>{{tdb%d|n/a}}</font>",
+							"name": "Tank Average Damage",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 20,
+							"y": -75
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{squad-num}}",
+							"name": "Squad Number",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+							"visible": true,
+							"x": 53,
+							"y": -23	
+						},
+						{
+							"alpha": 100,
+							"format": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png'>",
+							"name": "Client Language",
+							"visible": true,
+							"x": 0,
+							"y": -90					
+						}
+					],
+					"vehicleIcon":{
+						"alpha": 100,
+						"color": null,
+						"maxScale": 100,
+						"scaleX": 0,
+						"scaleY": 16,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"showSpeaker": false,
+						"visible": true,
+						"x": 0,
+						"y": -12
+					}
 				}
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -12
-			  }
-		   },
-			"extended":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 75, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 60},
-				"height": 16,
-				"lcolor": null,
-				"visible": true,
-				"width": 90,
-				"x": -46,
-				"y": -36
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
-			  "textFields": [
-				{
-				  "alpha": 100,
-				  "color": "0xFCFCFC",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{hp}} / {{hp-max}}",
-				  "name": "Current Health",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
-				  "visible": true,
-				  "x": 0,
-				  "y": -23
-			   },
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{nick}}",
-				  "name": "Player Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -41
-			   },
-				{
-				  "alpha": 100,
-				  "color": null,
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-				  "format": "<font color='{{c:wn8}}'>{{wn8}}</font>",
-				  "name": "WN8 Rating",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -58
-			   },
-				{
-				  "alpha": 100,
-				  "color": null,
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-				  "format": "<font color='{{c:kb}}'>{{kb}}</font>  <font color='{{c:rating}}'>{{rating}}</font>",
-				  "name": "Number of Battles and Winrate",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -75
+			},
+			"dead":{
+				"normal":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 30, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 80, "color": null, "fade": 1},
+						"fill":{"alpha": 30},
+						"height": 12,
+						"lcolor": null,
+						"visible": false,
+						"width": 80,
+						"x": -41,
+						"y": -33
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
+					"vehicleIcon":{
+						"alpha": 100,
+						"color": null,
+						"maxScale": 100,
+						"scaleX": 0,
+						"scaleY": 16,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"showSpeaker": false,
+						"visible": true,
+						"x": 0,
+						"y": -16
+					}
 				},
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{squad-num}} ",
-				  "name": "Squad Number",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
-				  "visible": true,
-				  "x": 53,
-				  "y": -23	
+				"extended":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 30, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 80, "color": null, "fade": 1},
+						"fill":{"alpha": 30},
+						"height": 12,
+						"lcolor": null,
+						"visible": false,
+						"width": 80,
+						"x": -41,
+						"y": -33
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
+					"textFields": [
+						{
+							"alpha": 80,
+							"color": null,
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
+							"format": "{{nick}}",
+							"name": "Player Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+							"visible": true,
+							"x": 0,
+							"y": -34
+						},
+						{
+							"alpha": 80,
+							"color": null,
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
+							"format": "{{vehicle}}",
+							"name": "Vehicle Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+							"visible": true,
+							"x": 0,
+							"y": -20
+						}
+					],
+					"vehicleIcon":{
+						"alpha": 100,
+						"color": null,
+						"maxScale": 100,
+						"scaleX": 0,
+						"scaleY": 16,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"showSpeaker": false,
+						"visible": true,
+						"x": 0,
+						"y": -16
+					}
 				}
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -12
-			  }
 			}
-		 },
-		  "dead":{
-			"normal":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 30, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 80, "color": null, "fade": 1},
-				"fill":{"alpha": 30},
-				"height": 12,
-				"lcolor": null,
-				"visible": false,
-				"width": 80,
-				"x": -41,
-				"y": -33
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
-			  "textFields": [
-
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -16
-			  }
-		   },
-			"extended":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 30, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 80, "color": null, "fade": 1},
-				"fill":{"alpha": 30},
-				"height": 12,
-				"lcolor": null,
-				"visible": false,
-				"width": 80,
-				"x": -41,
-				"y": -33
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
-			  "textFields": [
-				{
-				  "alpha": 80,
-				  "color": null,
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
-				  "format": "{{nick}}",
-				  "name": "Player Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				  "visible": true,
-				  "x": 0,
-				  "y": -34
-			   },
-				{
-				  "alpha": 80,
-				  "color": null,
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
-				  "format": "{{vehicle}}",
-				  "name": "Vehicle Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				  "visible": true,
-				  "x": 0,
-				  "y": -20
-				}
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -16
-			  }
-			}
-		  }
-	   },
+		},
 		"enemy":{
-		  "alive":{
-			"normal":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 75, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 60},
-				"height": 16,
-				"lcolor": null,
-				"visible": true,
-				"width": 90,
-				"x": -46,
-				"y": -36
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -65},
-			  "textFields": [
-				{
-				  "alpha": 100,
-				  "color": "0x000000",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{vehicle}}",
-				  "name": "Vehicle Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0xFF0000", "distance": 0, "size": 5, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -41
-			   },
-				{
-				  "alpha": 100,
-				  "color": "0xFCFCFC",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{hp}}",
-				  "name": "Current Health",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
-				  "visible": true,
-				  "x": 0,
-				  "y": -23
-			   },
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{rlevel}}",
-				  "name": "Vehicle Level",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -58
-			   },
-				{
-				  "alpha": 100,
-				  "color": null,
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 33},
-				  "format": "<font color='{{c:wn8|#FFFFFF}}'>_____</font>",
-				  "name": "WN8 Line",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -38
+			"alive":{
+				"normal":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 75, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 100, "color": null, "fade": 1},
+						"fill":{"alpha": 60},
+						"height": 16,
+						"lcolor": null,
+						"visible": true,
+						"width": 90,
+						"x": -46,
+						"y": -36
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -65},
+					"textFields":[
+						{
+							"alpha": 100,
+							"color": "0x000000",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{vehicle}}",
+							"name": "Vehicle Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0xFF0000", "distance": 0, "size": 5, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -41
+						},
+						{
+							"alpha": 100,
+							"color": "0xFCFCFC",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{hp}}",
+							"name": "Current Health",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
+							"visible": true,
+							"x": 0,
+							"y": -23
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{rlevel}}",
+							"name": "Vehicle Level",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 33},
+							"format": "<font color='{{c:wn8|#FFFFFF}}'>_____</font>",
+							"name": "WN8 Line",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -38
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{squad-num}}",
+							"name": "Squad Number",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+							"visible": true,
+							"x": 53,
+							"y": -23
+						}
+					],
+					"vehicleIcon":{
+						"alpha": 100,
+						"color": null,
+						"maxScale": 100,
+						"scaleX": 0,
+						"scaleY": 16,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"showSpeaker": false,
+						"visible": true,
+						"x": 0,
+						"y": -12
+					}
 				},
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{squad-num}} ",
-				  "name": "Squad Number",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
-				  "visible": true,
-				  "x": 53,
-				  "y": -23
+				"extended":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 75, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 100, "color": null, "fade": 1},
+						"fill":{"alpha": 60},
+						"height": 16,
+						"lcolor": null,
+						"visible": true,
+						"width": 90,
+						"x": -46,
+						"y": -36
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
+					"textFields":[
+						{
+							"alpha": 100,
+							"color": "0xFCFCFC",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{hp}} / {{hp-max}}",
+							"name": "Current Health",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
+							"visible": true,
+							"x": 0,
+							"y": -23
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{nick}}",
+							"name": "Player Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -41
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "right", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:kb}}'>{{kb}}</font>",
+							"name": "Global Battles",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": -20,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:rating}}'>{{rating}}</font>",
+							"name": "Global Winrate",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "left", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:wn8}}'>{{wn8%d}}</font>",
+							"name": "Global WN8",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 20,
+							"y": -58
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "right", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:t-battles|#FF0000}}'>{{t-battles|n/a}}</font>",
+							"name": "Tank Battles",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": -20,
+							"y": -75
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='{{c:t-rating|#FF0000}}'>{{t-rating%d~%|n/a}}</font>",
+							"name": "Tank Winrate",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 0,
+							"y": -75
+						},
+						{
+							"alpha": 100,
+							"color": null,
+							"font":{"align": "left", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
+							"format": "<font color='#FFFFFF'>{{tdb%d|n/a}}</font>",
+							"name": "Tank Average Damage",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
+							"visible": true,
+							"x": 20,
+							"y": -75
+						},
+						{
+							"alpha": 100,
+							"color": "0xFFFFFF",
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+							"format": "{{squad-num}}",
+							"name": "Squad Number",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+							"visible": true,
+							"x": 53,
+							"y": -23	
+						},
+						{
+							"alpha": 100,
+							"format": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png'>",
+							"name": "Client Language",
+							"visible": true,
+							"x": 0,
+							"y": -90					
+						}
+					],
+					"vehicleIcon":{
+						"alpha": 100,
+						"color": null,
+						"maxScale": 100,
+						"scaleX": 0,
+						"scaleY": 16,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"showSpeaker": false,
+						"visible": true,
+						"x": 0,
+						"y": -12
+					}
 				}
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -12
-			  }
-		   },
-			"extended":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 75, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 100, "color": null, "fade": 1},
-				"fill":{"alpha": 60},
-				"height": 16,
-				"lcolor": null,
-				"visible": true,
-				"width": 90,
-				"x": -46,
-				"y": -36
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
-			  "textFields": [
-				{
-				  "alpha": 100,
-				  "color": "0xFCFCFC",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{hp}} / {{hp-max}}",
-				  "name": "Current Health",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 150},
-				  "visible": true,
-				  "x": 0,
-				  "y": -23
-			   },
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{nick}}",
-				  "name": "Player Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -41
-			   },
-				{
-				  "alpha": 100,
-				  "color": null,
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-				  "format": "<font color='{{c:wn8}}'>{{wn8}}</font>",
-				  "name": "WN8 Rating",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -58
-			   },
-				{
-				  "alpha": 100,
-				  "color": null,
-				  "font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-				  "format": "<font color='{{c:kb}}'>{{kb}}</font>  <font color='{{c:rating}}'>{{rating}}</font>",
-				  "name": "Number of Battles and Winrate",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
-				  "visible": true,
-				  "x": 0,
-				  "y": -75
+			},
+			"dead":{
+				"normal":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 30, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 80, "color": null, "fade": 1},
+						"fill":{"alpha": 30},
+						"height": 12,
+						"lcolor": null,
+						"visible": false,
+						"width": 80,
+						"x": -41,
+						"y": -33
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
+					"vehicleIcon":{
+						"alpha": 100,
+						"color": null,
+						"maxScale": 100,
+						"scaleX": 0,
+						"scaleY": 16,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"showSpeaker": false,
+						"visible": true,
+						"x": 0,
+						"y": -16
+					}
 				},
-				{
-				  "alpha": 100,
-				  "color": "0xFFFFFF",
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
-				  "format": "{{squad-num}} ",
-				  "name": "Squad Number",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
-				  "visible": true,
-				  "x": 53,
-				  "y": -23	
+				"extended":{
+					"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
+					"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
+					"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
+					"damageText":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextPlayer":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"damageTextSquadman":{
+						"alpha": 100,
+						"blowupMessage": "{{dmg}}",
+						"color": null,
+						"damageMessage": "{{dmg}}",
+						"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+						"maxRange": 50,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"speed": 4,
+						"visible": true,
+						"x": 0,
+						"y": -90
+					},
+					"healthBar":{
+						"alpha": 100,
+						"border":{"alpha": 30, "color": "0x000000", "size": 1},
+						"color": null,
+						"damage":{"alpha": 80, "color": null, "fade": 1},
+						"fill":{"alpha": 30},
+						"height": 12,
+						"lcolor": null,
+						"visible": false,
+						"width": 80,
+						"x": -41,
+						"y": -33
+					},
+					"levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
+					"textFields":[
+						{
+							"alpha": 80,
+							"color": null,
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
+							"format": "{{nick}}",
+							"name": "Player Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+							"visible": true,
+							"x": 0,
+							"y": -34
+						},
+						{
+							"alpha": 80,
+							"color": null,
+							"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
+							"format": "{{vehicle}}",
+							"name": "Vehicle Name",
+							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+							"visible": true,
+							"x": 0,
+							"y": -20
+						}
+					],
+					"vehicleIcon":{
+						"alpha": 100,
+						"color": null,
+						"maxScale": 100,
+						"scaleX": 0,
+						"scaleY": 16,
+						"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+						"showSpeaker": false,
+						"visible": true,
+						"x": 0,
+						"y": -16
+					}
 				}
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -12
-			  }
 			}
-		 },
-		  "dead":{
-			"normal":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 30, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 80, "color": null, "fade": 1},
-				"fill":{"alpha": 30},
-				"height": 12,
-				"lcolor": null,
-				"visible": false,
-				"width": 80,
-				"x": -41,
-				"y": -33
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
-			  "textFields": [
-
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -16
-			  }
-		   },
-			"extended":{
-			  "actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
-			  "clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
-			  "contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
-			  "damageText":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextPlayer":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "damageTextSquadman":{
-				"alpha": 100,
-				"blowupMessage": "{{dmg}}",
-				"color": null,
-				"damageMessage": "{{dmg}}",
-				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-				"maxRange": 50,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"speed": 4,
-				"visible": true,
-				"x": 0,
-				"y": -90
-			 },
-			  "healthBar":{
-				"alpha": 100,
-				"border":{"alpha": 30, "color": "0x000000", "size": 1},
-				"color": null,
-				"damage":{"alpha": 80, "color": null, "fade": 1},
-				"fill":{"alpha": 30},
-				"height": 12,
-				"lcolor": null,
-				"visible": false,
-				"width": 80,
-				"x": -41,
-				"y": -33
-			 },
-			  "levelIcon":{"alpha": 100, "visible": false, "x": 0, "y": -21},
-			  "textFields": [
-				{
-				  "alpha": 80,
-				  "color": null,
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
-				  "format": "{{nick}}",
-				  "name": "Player Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				  "visible": true,
-				  "x": 0,
-				  "y": -34
-			   },
-				{
-				  "alpha": 80,
-				  "color": null,
-				  "font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 13},
-				  "format": "{{vehicle}}",
-				  "name": "Vehicle Name",
-				  "shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				  "visible": true,
-				  "x": 0,
-				  "y": -20
-				}
-			  ],
-			  "vehicleIcon":{
-				"alpha": 100,
-				"color": null,
-				"maxScale": 100,
-				"scaleX": 0,
-				"scaleY": 16,
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-				"showSpeaker": false,
-				"visible": true,
-				"x": 0,
-				"y": -16
-			  }
-			}
-		  }
-	   },
-    "useStandardMarkers": false
+		},
+		"useStandardMarkers": false
 	}
 }
