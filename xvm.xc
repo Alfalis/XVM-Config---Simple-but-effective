@@ -1,14 +1,14 @@
 ﻿//Alfalis - Simple but effective
-//Release 20
-//XVM 5.5.1.3 Build 3690
+//Release 21
+//XVM 6.0.0.1 Build 3775
 {
 	"autoReloadConfig": true,	
 	"battle":{
 		"showPostmortemTips": false
 	},
 	"battleLoading":{
-		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.13s~..}} <font alpha='#A0'>{{clan}}</font>",
-		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.13s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
+		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
+		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
 		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}",
 		"clanIcon":{
@@ -18,6 +18,28 @@
 	"battleResults":{
 		"startPage": 2,
 		"showCrewExperience": true
+	},
+	"captureBar":{
+		"enemy":{
+			"primaryTitleFormat":   "<font size='20' color='#FFFFFF' face='Calibri'>{{extra}}</font>",
+			"secondaryTitleFormat": "<font size='16' color='#FFFFFF' face='Calibri'>{{points}}</font>",
+			"captureDoneFormat":    "<font size='20' color='#60FF00' face='Calibri'>ENEMY BASE CAPTURED!</font>",
+			"extra": "INVADERS: <b>{{tanks}}</b>  TIME TO WIN: <b><font color='#00EE00'>{{time}}</font><b>",
+			"shadow":{
+				"alpha": 70,
+				"strength": 3
+			}
+		},
+		"ally":{
+			"primaryTitleFormat":   "<font size='20' color='#FFFFFF' face='Calibri'>{{extra}}</font>",
+			"secondaryTitleFormat": "<font size='16' color='#FFFFFF' face='Calibri'>{{points}}</font>",
+			"captureDoneFormat":    "<font size='20' color='#FE0E00' face='Calibri'>ALLY BASE CAPTURED!</font>",
+			"extra": "INVADERS: <b>{{tanks}}</b>  TIME TO LOSE: <b><font color='#EE0000'>{{time}}</font><b>",
+			"shadow":{
+				"alpha": 70,
+				"strength": 3
+			}
+		}
 	},
 	"colors":{
 		"dmg_kind": {
@@ -50,7 +72,8 @@
 				{"x": 130, "y": -1, "format": "<img src='img://gui/maps/icons/library/proficiency/class_icons_{{v.mastery}}.png' width='27' height='27'>"},
 				{"x": 4, "y": 29, "format": "<font color='{{v.c_winrate|#FF0000}}'>{{v.winrate%d~%|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": 4, "y": 49, "format": "<font color='{{v.c_wn8effd|#FF0000}}'>{{v.wn8effd%0.2f|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
-				{"x": 60, "y": 2, "format": "<font color='{{v.c_damageRating|#FF0000}}' size='13'>{{v.damageRating%0.2f~%|n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 60, "y": 2, "format": "<font color='{{v.c_damageRating|#FF0000}}' size='13'>{{v.damageRating%05.2f~%|   n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 60, "y": 18, "format": "<font color='#FFFFFF' size='13'>{{v.battles%5d|   n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": -2, "y": -1, "h": 100, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?10|0}}"},
 				{"x": -2, "y": -1, "h": 2, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": -2, "y": -1, "h": 100, "w": "2", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
@@ -129,24 +152,33 @@
 			"units":{
 				"format":{
 					"ally": 			"<span class='mm_a'>{{vehicle}}</span>",
+					"lostally": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_la'>{{vehicle}}</span>",
 					"deadally": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_da'></span>",
 					"enemy": 			"<span class='mm_e'>{{vehicle}}</span>",
-					"deadenemy": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_de'></span>",
-					"squad": 			"<span class='mm_s'>{{vehicle}}</span>",
-					"deadsquad": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_ds'></span>",
-					"teamkiller": 		"<span class='mm_t'>{{vehicle}}</span>",
-					"deadteamkiller": 	"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_dt'></span>",
 					"lost": 			"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_l'>{{vehicle}}</span>",
-					"lostally": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_la'>{{vehicle}}</span>",
-					"lostsquad": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_ls'>{{vehicle}}</span>",
+					"deadenemy": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_de'></span>",
+					"squad": 			"<textformat leading='-1'><span class='mm_s'><i>{{name%.7s}}</i>\n{{vehicle}}</span></textformat>",
+					"lostsquad": 		"<textformat leading='-4'><span class='mm_dot'>{{vehicle-class}}</span><span class='mm_ls'><i>{{name%.7s}}</i>\n{{vehicle}}</span></textformat>",
+					"deadsquad": 		"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_ds'><i>{{name%.7s}}</i></span>",
+					"teamkiller": 		"<span class='mm_t'>{{vehicle}}</span>",
 					"lostteamkiller": 	"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_lt'>{{vehicle}}</span>",
+					"deadteamkiller": 	"<span class='mm_dot'>{{vehicle-class}}</span><span class='mm_dt'></span>",
 					"oneself": 			""
 				},
 				"css":{
-					"deadally":			".mm_da{font-family:$FieldFont; font-size:8px; color:#6E8C5B;} .mm_dot{font-family:Arial; font-size:17px; color:#006D00;}",
-					"deadteamkiller":	".mm_dt{font-family:$FieldFont; font-size:8px; color:#5B898C;} .mm_dot{font-family:Arial; font-size:17px; color:#09535B;}",
-					"deadenemy":		".mm_de{font-family:$FieldFont; font-size:8px; color:#996763;} .mm_dot{font-family:Arial; font-size:17px; color:#6D0300;}",
-					"deadsquad":		".mm_ds{font-family:$FieldFont; font-size:8px; color:#997C5C;} .mm_dot{font-family:Arial; font-size:17px; color:#834800;}"
+					"ally":          	".mm_a{font-family:$FieldFont; font-size:7px; color:#C8FFA6;}",
+					"lostally":      	".mm_la{font-family:$FieldFont; font-size:7px; color:#C8FFA6;} .mm_dot{font-family:Arial; font-size:17px; color:#B4E595;}",
+					"deadally":			".mm_da{font-family:$FieldFont; font-size:7px; color:#6E8C5B;} .mm_dot{font-family:Arial; font-size:17px; color:#006D00;}",
+					"enemy":         	".mm_e{font-family:$FieldFont; font-size:7px; color:#FCA9A4;}",
+					"lost":           	".mm_l{font-family:$FieldFont; font-size:7px; color:#FCA9A4;} .mm_dot{font-family:Arial; font-size:17px; color:#E59995;}",
+					"deadenemy":		".mm_de{font-family:$FieldFont; font-size:7px; color:#996763;} .mm_dot{font-family:Arial; font-size:17px; color:#6D0300;}",
+					"squad":          	".mm_s{font-family:$FieldFont; font-size:7px; color:#FFD099;}",
+					"lostsquad":      	".mm_ls{font-family:$FieldFont; font-size:7px; color:#FFD099;} .mm_dot{font-family:Arial; font-size:17px; color:#E5BB8A;}",
+					"deadsquad":		".mm_ds{font-family:$FieldFont; font-size:7px; color:#997C5C;} .mm_dot{font-family:Arial; font-size:17px; color:#834800;}",
+					"teamkiller":    	".mm_t{font-family:$FieldFont; font-size:7px; color:#A6F8FF;}",
+					"lostteamkiller": 	".mm_lt{font-family:$FieldFont; font-size:7px; color:#A6F8FF;} .mm_dot{font-family:Arial; font-size:17px; color:#00D2E5;}",
+					"deadteamkiller":	".mm_dt{font-family:$FieldFont; font-size:7px; color:#5B898C;} .mm_dot{font-family:Arial; font-size:17px; color:#09535B;}",
+					"oneself":       	".mm_o{font-family:$FieldFont; font-size:7px; color:#FFFFFF;}"
 				},
 				"shadow":{
 					"deadally":
@@ -236,8 +268,8 @@
 			]
 		},
 		"large":{
-			"nickFormatLeft": "<font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>  {{name%.17s~..}} <font alpha='#A0'>{{clan}}</font>",
-			"nickFormatRight": "<font alpha='#A0'>{{clan}}</font> {{name%.17s~..}}  <font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>",
+			"nickFormatLeft": "<font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>  {{name%.18s~..}} <font alpha='#A0'>{{clan}}</font>",
+			"nickFormatRight": "<font alpha='#A0'>{{clan}}</font> {{name%.18s~..}}  <font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>",
 			"vehicleFormatLeft": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"vehicleFormatRight": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"width": 170,
@@ -250,8 +282,8 @@
 		"clanIcon":{
 			"show": false
 		},
-		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.13s~..}} <font alpha='#A0'>{{clan}}</font>",
-		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.13s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
+		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
+		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
 		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
 		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
 	},
@@ -483,7 +515,7 @@
 							"alpha": 100,
 							"color": "0xFFFFFF",
 							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-							"format": "{{nick}}",
+							"format": "{{name}} <font color='#CCCCCC'>{{clan}}</font>",
 							"name": "Player Name",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 300},
 							"visible": true,
@@ -494,7 +526,7 @@
 							"alpha": 100,
 							"color": null,
 							"font":{"align": "right", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-							"format": "<font color='{{c:kb}}'>{{kb}}</font>",
+							"format": "<font color='{{c:kb|#FF0000}}'>{{kb%2d~k|n/a}}</font>",
 							"name": "Global Battles",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 							"visible": true,
@@ -505,7 +537,7 @@
 							"alpha": 100,
 							"color": null,
 							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-							"format": "<font color='{{c:rating}}'>{{rating}}</font>",
+							"format": "<font color='{{c:rating|#FF0000}}'>{{rating%2d~%|n/a}}</font>",
 							"name": "Global Winrate",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 							"visible": true,
@@ -516,7 +548,7 @@
 							"alpha": 100,
 							"color": null,
 							"font":{"align": "left", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-							"format": "<font color='{{c:wn8}}'>{{wn8%d}}</font>",
+							"format": "<font color='{{c:wn8|#FF0000}}'>{{wn8%d|n/a}}</font>",
 							"name": "Global WN8",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 							"visible": true,
@@ -959,7 +991,7 @@
 							"alpha": 100,
 							"color": "0xFFFFFF",
 							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
-							"format": "{{nick}}",
+							"format": "{{name}} <font color='#CCCCCC'>{{clan}}",
 							"name": "Player Name",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 300},
 							"visible": true,
@@ -970,7 +1002,7 @@
 							"alpha": 100,
 							"color": null,
 							"font":{"align": "right", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-							"format": "<font color='{{c:kb}}'>{{kb}}</font>",
+							"format": "<font color='{{c:kb|#FF0000}}'>{{kb%2d~k|n/a}}</font>",
 							"name": "Global Battles",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 							"visible": true,
@@ -981,7 +1013,7 @@
 							"alpha": 100,
 							"color": null,
 							"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-							"format": "<font color='{{c:rating}}'>{{rating}}</font>",
+							"format": "<font color='{{c:rating|#FF0000}}'>{{rating%2d~%|n/a}}</font>",
 							"name": "Global Winrate",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 							"visible": true,
@@ -992,7 +1024,7 @@
 							"alpha": 100,
 							"color": null,
 							"font":{"align": "left", "bold": true, "italic": false, "name": "$FieldFont", "size": 16},
-							"format": "<font color='{{c:wn8}}'>{{wn8%d}}</font>",
+							"format": "<font color='{{c:wn8|#FF0000}}'>{{wn8%d|n/a}}</font>",
 							"name": "Global WN8",
 							"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 10, "strength": 300},
 							"visible": true,
