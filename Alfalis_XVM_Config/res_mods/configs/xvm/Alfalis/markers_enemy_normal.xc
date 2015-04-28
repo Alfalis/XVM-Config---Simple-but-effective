@@ -1,46 +1,29 @@
 {
-	"markers_ally_alive_normal":{
+	"damageText":{
+		"visible": true,
+		"x": 0,
+		"y": -90,
+		"alpha": 100,
+		"color": null,
+		"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
+		"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
+		"speed": 4,
+		"maxRange": 50,
+		"damageMessage": "{{dmg}}",
+		"blowupMessage": "<font color='#0000FF' face='Wingdings'>M</font> Ammo Rack <font color='#0000FF' face='Wingdings'>M</font>"
+	},
+	"markers_enemy_alive_normal":{
 		"actionMarker":{"alpha": 100, "visible": true, "x": 0, "y": -67},
 		"clanIcon":{"alpha": 100, "h": 16, "visible": false, "w": 16, "x": 0, "y": -67},
 		"contourIcon":{"alpha": 100, "amount": 0, "color": null, "visible": false, "x": 6, "y": -65},
 		"damageText":{
-			"alpha": 100,
-			"blowupMessage": "{{dmg}}",
-			"color": null,
-			"damageMessage": "{{dmg}}",
-			"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-			"maxRange": 50,
-			"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-			"speed": 4,
-			"visible": true,
-			"x": 0,
-			"y": -90
+			"$ref": {"path":"damageText"}
 		},
 		"damageTextPlayer":{
-			"alpha": 100,
-			"blowupMessage": "{{dmg}}",
-			"color": null,
-			"damageMessage": "{{dmg}}",
-			"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-			"maxRange": 50,
-			"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-			"speed": 4,
-			"visible": true,
-			"x": 0,
-			"y": -90
+			"$ref": {"path":"damageText"}
 		},
 		"damageTextSquadman":{
-			"alpha": 100,
-			"blowupMessage": "{{dmg}}",
-			"color": null,
-			"damageMessage": "{{dmg}}",
-			"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 18},
-			"maxRange": 50,
-			"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 6, "strength": 200},
-			"speed": 4,
-			"visible": true,
-			"x": 0,
-			"y": -90
+			"$ref": {"path":"damageText"}
 		},
 		"healthBar":{
 			"alpha": 100,
@@ -63,7 +46,7 @@
 				"font":{"align": "center", "bold": true, "italic": false, "name": "$FieldFont", "size": 15},
 				"format": "{{vehicle}}",
 				"name": "Vehicle Name",
-				"shadow":{"alpha": 100, "angle": 90, "color": "0x00FF00", "distance": 0, "size": 5, "strength": 300},
+				"shadow":{"alpha": 100, "angle": 90, "color": "0xFF0000", "distance": 0, "size": 5, "strength": 300},
 				"visible": true,
 				"x": 0,
 				"y": -41
@@ -110,7 +93,7 @@
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
 				"visible": true,
 				"x": 50,
-				"y": -23	
+				"y": -23
 			}
 		],
 		"vehicleIcon":{
@@ -124,6 +107,17 @@
 			"visible": true,
 			"x": 0,
 			"y": -12
+		}
+	},
+	"markers_enemy_dead_normal":{
+		"damageText":{
+			"$ref": {"path":"damageText"}
+		},
+		"damageTextPlayer":{
+			"$ref": {"path":"damageText"}
+		},
+		"damageTextSquadman":{
+			"$ref": {"path":"damageText"}
 		}
 	}
 }

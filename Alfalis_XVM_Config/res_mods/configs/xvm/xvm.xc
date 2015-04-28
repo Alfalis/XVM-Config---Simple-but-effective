@@ -1,15 +1,15 @@
 ﻿//Alfalis - Simple but effective
-//Release 22
+//Release 23
 {
 	"autoReloadConfig": true,	
 	"battle":{
 		"showPostmortemTips": false
 	},
 	"battleLoading":{
-		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
-		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
-		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
-		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}",
+		"formatLeftNick": "{{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
+		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}}",
+		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
+		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}",
 		"clanIcon":{
 			"show": false
 		}
@@ -57,9 +57,18 @@
 			{"value": 25,	"color": "0xFE7903"},
 			{"value": 50,	"color": "0xF8F400"},
 			{"value": 101,	"color": "0x00EE00"}
+		],
+		"wn8": [
+		  {"value": 360,  "color": ${"default/colors.xc":"def.colorRating.very_bad"}},
+		  {"value": 825,  "color": ${"default/colors.xc":"def.colorRating.bad"}},
+		  {"value": 1385, "color": ${"default/colors.xc":"def.colorRating.normal"}},
+		  {"value": 2055, "color": ${"default/colors.xc":"def.colorRating.good"}},
+		  {"value": 2675, "color": ${"default/colors.xc":"def.colorRating.very_good"}},
+		  {"value": 9999, "color": ${"default/colors.xc":"def.colorRating.unique"}}
 		]
 	},
 	"hangar":{
+		"enableCrewAutoReturn": false,
 		"carousel":{
 			"rows": 3,
 			"padding": {"horizontal": 2, "vertical": 2},
@@ -73,12 +82,14 @@
 				{"x": 4, "y": 49, "format": "<font color='{{v.c_wn8effd|#FF0000}}'>{{v.wn8effd%0.2f|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": 60, "y": 2, "format": "<font color='{{v.c_damageRating|#FF0000}}' size='13'>{{v.damageRating%05.2f~%|   n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": 60, "y": 18, "format": "<font color='#FFFFFF' size='13'>{{v.battles%5d|   n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 60, "y": 34, "format": "<font color='#FFFFFF' size='13'>{{v.xpToEliteLeft%'d|  Elite}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": -2, "y": -1, "h": 100, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?10|0}}"},
 				{"x": -2, "y": -1, "h": 2, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": -2, "y": -1, "h": 100, "w": "2", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": 160, "y": -1, "h": 100, "w": "2", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": -2, "y": 99, "h": 2, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"}
-			]
+			],
+			"nations_order": ["china", "france", "germany", "uk", "usa", "ussr", "japan"]
 		},
 		"clock":{
 			"format": "<textformat tabstops='[80]' leading='-39'><font face='$FieldFont' color='#A7A798'><font size='15'>{{D%02d}} {{MM}} {{Y}}<tab><font size='36'>{{h%02d}}:{{m%02d}}</font>\n<textformat rightMargin='87'>{{WW}}</font></textformat></textformat>",
@@ -103,8 +114,8 @@
 				}
 			},
 			"threshold":{
-				"great": 30,
-				"good": 50,
+				"great": 50,
+				"good": 75,
 				"poor": 100
 			},
 			"shadow":{
@@ -267,8 +278,8 @@
 			]
 		},
 		"large":{
-			"nickFormatLeft": "<font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>  {{name%.18s~..}} <font alpha='#A0'>{{clan}}</font>",
-			"nickFormatRight": "<font alpha='#A0'>{{clan}}</font> {{name%.18s~..}}  <font color='{{c:rating|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{rating%2d~%|  0%}}</font>",
+			"nickFormatLeft": "<font color='{{c:winrate|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{winrate%2d~%|  0%}}</font>  {{name%.18s~..}} <font alpha='#A0'>{{clan}}</font>",
+			"nickFormatRight": "<font alpha='#A0'>{{clan}}</font> {{name%.18s~..}}  <font color='{{c:winrate|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{winrate%2d~%|  0%}}</font>",
 			"vehicleFormatLeft": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"vehicleFormatRight": "<font color='{{c:wn8|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{vehicle}}</font>",
 			"width": 170,
@@ -281,10 +292,10 @@
 		"clanIcon":{
 			"show": false
 		},
-		"formatLeftNick": "<img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'> {{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
-		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}} <img src='xvm://res/icons/lang/{{region|EU}}/{{language|default}}.png' width='16' height='13'>",
-		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
-		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:rating}}'>{{rating%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
+		"formatLeftNick": "{{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
+		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}}",
+		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
+		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
 	},
 	"texts":{
 		"spotted":{
@@ -309,14 +320,22 @@
 	"markers":{
 		"ally":{
 			"alive":{
-				"normal": ${"Alfalis/markers_ally_alive_normal.xc":"markers_ally_alive_normal"},
-				"extended": ${"Alfalis/markers_ally_alive_extended.xc":"markers_ally_alive_extended"}
+				"normal": ${"Alfalis/markers_ally_normal.xc":"markers_ally_alive_normal"},
+				"extended": ${"Alfalis/markers_ally_extended.xc":"markers_ally_alive_extended"}
+			},
+			"dead":{
+				"normal": ${"Alfalis/markers_ally_normal.xc":"markers_ally_dead_normal"},
+				"extended": ${"Alfalis/markers_ally_extended.xc":"markers_ally_dead_extended"}
 			}
 		},
 		"enemy":{
 			"alive":{
-				"normal": ${"Alfalis/markers_enemy_alive_normal.xc":"markers_enemy_alive_normal"},
-				"extended": ${"Alfalis/markers_enemy_alive_extended.xc":"markers_enemy_alive_extended"}
+				"normal": ${"Alfalis/markers_enemy_normal.xc":"markers_enemy_alive_normal"},
+				"extended": ${"Alfalis/markers_enemy_extended.xc":"markers_enemy_alive_extended"}
+			},
+			"dead":{
+				"normal": ${"Alfalis/markers_enemy_normal.xc":"markers_enemy_dead_normal"},
+				"extended": ${"Alfalis/markers_enemy_extended.xc":"markers_enemy_dead_extended"}
 			}
 		},
 		"useStandardMarkers": false
