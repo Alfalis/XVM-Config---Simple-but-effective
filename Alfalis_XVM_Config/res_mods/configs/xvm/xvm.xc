@@ -1,5 +1,5 @@
 ﻿//Alfalis - Simple but effective
-//Release 23
+//Release 24
 {
 	"autoReloadConfig": true,	
 	"battle":{
@@ -23,7 +23,7 @@
 			"primaryTitleFormat":   "<font size='20' color='#FFFFFF' face='Calibri'>{{extra}}</font>",
 			"secondaryTitleFormat": "<font size='16' color='#FFFFFF' face='Calibri'>{{points}}</font>",
 			"captureDoneFormat":    "<font size='20' color='#60FF00' face='Calibri'>ENEMY BASE CAPTURED!</font>",
-			"extra": "INVADERS: <b>{{tanks}}</b>  TIME TO WIN: <b><font color='#00EE00'>{{time}}</font><b>",
+			"extra": "INVADERS: <b>{{tanks}}</b>   VICTORY IN: <b><font color='#00EE00'>{{time}}</font><b>",
 			"shadow":{
 				"alpha": 70,
 				"strength": 3
@@ -33,7 +33,7 @@
 			"primaryTitleFormat":   "<font size='20' color='#FFFFFF' face='Calibri'>{{extra}}</font>",
 			"secondaryTitleFormat": "<font size='16' color='#FFFFFF' face='Calibri'>{{points}}</font>",
 			"captureDoneFormat":    "<font size='20' color='#FE0E00' face='Calibri'>ALLY BASE CAPTURED!</font>",
-			"extra": "INVADERS: <b>{{tanks}}</b>  TIME TO LOSE: <b><font color='#EE0000'>{{time}}</font><b>",
+			"extra": "INVADERS: <b>{{tanks}}</b>   DEFEAT IN: <b><font color='#EE0000'>{{time}}</font><b>",
 			"shadow":{
 				"alpha": 70,
 				"strength": 3
@@ -78,11 +78,18 @@
 			},
 			"extraFields":[
 				{"x": 130, "y": -1, "format": "<img src='img://gui/maps/icons/library/proficiency/class_icons_{{v.mastery}}.png' width='27' height='27'>"},
-				{"x": 4, "y": 29, "format": "<font color='{{v.c_winrate|#FF0000}}'>{{v.winrate%d~%|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
-				{"x": 4, "y": 49, "format": "<font color='{{v.c_wn8effd|#FF0000}}'>{{v.wn8effd%0.2f|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				//Winrate
+				{"x": 4, "y": 20, "format": "<font color='#FFFFFF' size='10'>WR:</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 4, "y": 30, "format": "<font color='{{v.c_winrate|#FF0000}}'>{{v.winrate%d~%|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				//xTE
+				{"x": 4, "y": 49, "format": "<font color='#FFFFFF' size='10'>xTE:</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 4, "y": 59, "format": "<font color='{{v.c_xte|#FF0000}}'>{{v.xte|n/a}}</font>", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				//Dynamic info, only shown when tank is selected
+				{"x": 125, "y": 27, "format": "<font color='#FFFFFF' size='11'>Battles</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 100, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 127, "y": 39, "format": "<font color='#FFFFFF' size='13'>{{v.battles%4.4s|   n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
 				{"x": 60, "y": 2, "format": "<font color='{{v.c_damageRating|#FF0000}}' size='13'>{{v.damageRating%05.2f~%|   n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
-				{"x": 60, "y": 18, "format": "<font color='#FFFFFF' size='13'>{{v.battles%5d|   n/a}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
-				{"x": 60, "y": 34, "format": "<font color='#FFFFFF' size='13'>{{v.xpToEliteLeft%'d|  Elite}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				{"x": 60, "y": 18, "format": "<font color='#FFFFFF' size='13'>{{v.xpToEliteLeft%'d|  Elite}}</font>", "alpha": "{{v.selected?100|0}}", "shadow": {"color": "0x000000", "alpha": 50, "angle": 45, "distance": 0, "size": 1, "strength": 90}},
+				//Borders and highlighting
 				{"x": -2, "y": -1, "h": 100, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?10|0}}"},
 				{"x": -2, "y": -1, "h": 2, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": -2, "y": -1, "h": 100, "w": "2", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
@@ -124,7 +131,7 @@
 			}
 		}
 	},
-	"hitLog": {
+	"hitLog":{
 		"visible": true,
 		"x": 430,
 		"blowupMarker": "<font color='#0000FF' face='Wingdings'>M</font>",
@@ -219,11 +226,7 @@
 		"circles":{
 			"view":[
 				{"enabled": true, "distance": "blindarea", "scale": 1, "thickness": 0.75, "alpha": 70, "color": "0x3EB5F1"},
-				{"enabled": false, "distance": 445,         "scale": 1, "thickness":  1.1, "alpha": 45, "color": "0xFFCC66"},
-				{"enabled": false, "distance": 50,          "scale": 1, "thickness": 0.75, "alpha": 60, "color": "0xFFFFFF"},
-				{"enabled": false, "distance": "standing",  "scale": 1, "thickness":  1.0, "alpha": 60, "color": "0xFF0000"},
-				{"enabled": false, "distance": "motion",    "scale": 1, "thickness":  1.0, "alpha": 60, "color": "0x0000FF"},
-				{"enabled": false, "distance": "dynamic",   "scale": 1, "thickness":  1.0, "alpha": 60, "color": "0x3EB5F1"}
+				{"enabled": true, "distance": 50,          "scale": 1, "thickness": 0.60, "alpha": 50, "color": "0xFFFFFF"}
 			],
 			"artillery": {"enabled": true, "alpha": 70, "color": "0xFF6666", "thickness": 0.5},
 			"shell": {"enabled": true, "alpha": 70, "color": "0xFF6666", "thickness": 0.5}
