@@ -1,5 +1,5 @@
 ﻿//Alfalis - Simple but effective
-//Release 24
+//Release 25
 {
 	"autoReloadConfig": true,	
 	"battle":{
@@ -8,14 +8,13 @@
 	"battleLoading":{
 		"formatLeftNick": "{{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
 		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}}",
-		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
-		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}",
+		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8%4d}}</font></font>",
+		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8%4d}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}",
 		"clanIcon":{
 			"show": false
 		}
 	},
 	"battleResults":{
-		"startPage": 2,
 		"showCrewExperience": true
 	},
 	"captureBar":{
@@ -108,22 +107,51 @@
 		"pingServers":{
 			"enabled": true,
 			"updateInterval": 5000,
-			"x": 200,
-			"y": 83,
+			"x": 250,
+			"y": 70,
 			"alpha": 90,
+			"maxRows": 3,
 			"fontStyle":{
 				"size": 18,
-				"color": {
+				"color":{
 					"great": "0x2AE62E",
 					"good":  "0xEDF51B",
 					"poor":  "0xFB1B1B",
 					"bad":   "0x868686"
-				}
+				},
+				"markCurrentServer": "underline"
 			},
 			"threshold":{
 				"great": 50,
 				"good": 75,
 				"poor": 100
+			},
+			"shadow":{
+				"alpha": 80,
+				"strength": 3
+			}
+		},
+		"onlineServers":{
+			"enabled": true,
+			"x": 330,
+			"y": 70,
+			"hAlign": "left",
+			"alpha": 90,
+			"maxRows": 3,
+			"fontStyle":{
+				"size": 18,
+				"color":{
+					"great": "0x2AE62E",
+					"good":  "0xEDF51B",
+					"poor":  "0xFB1B1B",
+					"bad":   "0x868686"
+				},
+				"markCurrentServer": "underline"
+			},
+			"threshold":{
+				"great": 30000,
+				"good": 10000,
+				"poor": 3000
 			},
 			"shadow":{
 				"alpha": 80,
@@ -262,6 +290,7 @@
 		}
 	},
 	"playersPanel":{
+		"alpha": 75,
 		"clanIcon":{
 			"alpha": 90,
 			"h": 20,
@@ -297,8 +326,8 @@
 		},
 		"formatLeftNick": "{{name%.12s~..}} <font alpha='#A0'>{{clan}}</font>",
 		"formatRightNick": "<font alpha='#A0'>{{clan}}</font> {{name%.12s~..}}",
-		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8}}</font></font>",
-		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
+		"formatLeftVehicle": "{{vehicle}}<font face='Lucida Console' size='12'> <font color='{{c:kb}}'>{{kb%2d~k}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:wn8}}'>{{wn8%4d}}</font></font>",
+		"formatRightVehicle": "<font face='Lucida Console' size='12'><font color='{{c:wn8}}'>{{wn8%4d}}</font> <font color='{{c:winrate}}'>{{winrate%2d~%}}</font> <font color='{{c:kb}}'>{{kb%2d~k}}</font> </font>{{vehicle}}"
 	},
 	"texts":{
 		"spotted":{
