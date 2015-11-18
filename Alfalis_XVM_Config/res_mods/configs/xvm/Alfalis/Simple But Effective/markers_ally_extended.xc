@@ -140,15 +140,26 @@
 				"y": -38
 			},
 			{
-				"alpha": 100,
+				"alpha": "{{squad-num?100|0}}",
 				"color": "0xFFFFFF",
 				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 15},
+				"format": "<img src='cfg://Alfalis/Simple But Effective/img/platoon_background.png' width='14' height='17'>",
+				"name": "Squad Number Background",
+				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
+				"visible": true,
+				"x": 54,
+				"y": -20
+			},
+			{
+				"alpha": "{{squad-num?100|0}}",
+				"color": "0xFFFFFF",
+				"font":{"align": "center", "bold": false, "italic": false, "name": "$FieldFont", "size": 12},
 				"format": "{{squad-num}}",
 				"name": "Squad Number",
 				"shadow":{"alpha": 100, "angle": 90, "color": "0x000000", "distance": 0, "size": 4, "strength": 300},
 				"visible": true,
-				"x": 50,
-				"y": -23	
+				"x": 54,
+				"y": -22
 			}
 		],
 		"vehicleIcon":{
