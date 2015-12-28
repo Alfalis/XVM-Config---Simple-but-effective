@@ -1,5 +1,5 @@
 ﻿//Alfalis - Simple but effective
-//Release 26
+//Release 27
 {
 	"autoReloadConfig": true,	
 	"battle":{
@@ -16,6 +16,9 @@
 	},
 	"battleResults":{
 		"showCrewExperience": true
+	},
+	"camera":{
+		"enabled": true
 	},
 	"captureBar":{
 		"enemy":{
@@ -58,11 +61,11 @@
 			{"value": 101,	"color": "0x00EE00"}
 		],
 		"wn8": [
-		  {"value": 370,  "color": ${"../../default/colors.xc":"def.colorRating.very_bad"}},
-		  {"value": 845,  "color": ${"../../default/colors.xc":"def.colorRating.bad"}},
-		  {"value": 1395, "color": ${"../../default/colors.xc":"def.colorRating.normal"}},
-		  {"value": 2070, "color": ${"../../default/colors.xc":"def.colorRating.good"}},
-		  {"value": 2715, "color": ${"../../default/colors.xc":"def.colorRating.very_good"}},
+		  {"value": 380,  "color": ${"../../default/colors.xc":"def.colorRating.very_bad"}},
+		  {"value": 860,  "color": ${"../../default/colors.xc":"def.colorRating.bad"}},
+		  {"value": 1420, "color": ${"../../default/colors.xc":"def.colorRating.normal"}},
+		  {"value": 2105, "color": ${"../../default/colors.xc":"def.colorRating.good"}},
+		  {"value": 2770, "color": ${"../../default/colors.xc":"def.colorRating.very_good"}},
 		  {"value": 9999, "color": ${"../../default/colors.xc":"def.colorRating.unique"}}
 		]
 	},
@@ -95,7 +98,7 @@
 				{"x": 160, "y": -1, "h": 100, "w": "2", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"},
 				{"x": -2, "y": 99, "h": 2, "w": "164", "bgColor": "{{v.selected?#FFFFFF|#000000}}", "alpha": "{{v.selected?75|0}}"}
 			],
-			"nations_order": ["china", "france", "germany", "uk", "usa", "ussr", "japan"]
+			"nations_order": ["china", "france", "germany", "uk", "usa", "ussr", "japan", "czech"]
 		},
 		"clock":{
 			"format": "<textformat tabstops='[80]' leading='-39'><font face='$FieldFont' color='#A7A798'><font size='15'>{{D%02d}} {{MM}} {{Y}}<tab><font size='36'>{{h%02d}}:{{m%02d}}</font>\n<textformat rightMargin='87'>{{WW}}</font></textformat></textformat>",
@@ -194,6 +197,24 @@
 	"minimap":{
 		"hideCameraTriangle": true,
 		"minimapAimIcon": "cfg://Alfalis/Simple But Effective/img/MinimapAim.png",
+		"circles":{
+			"view":[
+				{"enabled": true, "distance": "blindarea", "scale": 1, "thickness": 0.75, "alpha": 70, "color": "0x3EB5F1"},
+				{"enabled": true, "distance": 564, "scale": 1, "thickness":  0.8, "alpha": 80, "color": "0xFFFFFF"},
+				{"enabled": true, "distance": 50, "scale": 1, "thickness": 0.6, "alpha": 50, "color": "0xFFFFFF"}
+			]
+		},
+		"labels":{
+			"formats": [
+				${"minimapLabelsTemplates.xc":"def.vehicleSpotted"},
+				${"minimapLabelsTemplates.xc":"def.nickSpotted"},
+				${"minimapLabelsTemplates.xc":"def.vtypeLost"},
+				${"minimapLabelsTemplates.xc":"def.vehicleLost"},
+				${"minimapLabelsTemplates.xc":"def.nickLost"},
+				${"minimapLabelsTemplates.xc":"def.vtypeDead"}
+			]
+		},
+		"labelsData": ${"minimapLabelsTemplates.xc":"vtype_lost"},
 		"lines":{
 			"camera":[
 				{
@@ -223,6 +244,9 @@
 				}
 			]
 		}
+	},
+	"minimapAlt":{
+		"enabled": false
 	},
 	"playersPanel":{
 		"alpha": 75,

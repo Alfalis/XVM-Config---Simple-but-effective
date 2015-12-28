@@ -4,9 +4,9 @@
 //3. Make sure that all other links to main_config.xc files have "//" in front of them
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-//Simple But Effective - Release 26 - 2015/11/18 - 0.9.12
+//Simple But Effective - Release 27 - 2015/12/28 - 0.9.13
 ${"Alfalis/Simple But Effective/main_config.xc":"."}
 
 
-//Minimalistic - Release 1 - 2015/11/18 - 0.9.12
+//Minimalistic - Release 27 - 2015/12/28 - 0.9.13
 //${"Alfalis/Minimalistic/main_config.xc":"."}
